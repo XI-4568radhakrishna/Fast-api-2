@@ -43,13 +43,7 @@ pipeline {
                 }
             }
         }
-     post {
-        failure {
-            echo 'Security vulnerabilities detected!'
-        }
-    }
-
-	    
+     	    
     // Uploading Docker images into AWS ECR
     stage('Pushing to ECR') {
      steps{  
@@ -97,5 +91,9 @@ pipeline {
             }
         }
     }
- 
+    post {
+        failure {
+            echo 'Security vulnerabilities detected!'
+        }
+    }
 }
