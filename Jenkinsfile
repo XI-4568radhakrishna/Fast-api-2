@@ -48,7 +48,7 @@ pipeline {
             echo 'Security vulnerabilities detected!'
         }
     }
-}
+
 	    
     // Uploading Docker images into AWS ECR
     stage('Pushing to ECR') {
@@ -97,4 +97,5 @@ pipeline {
             }
         }
     }
+ 
 }
