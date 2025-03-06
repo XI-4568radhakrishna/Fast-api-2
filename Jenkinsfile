@@ -6,6 +6,7 @@ pipeline {
         IMAGE_REPO_NAME="aisdlc"
         IMAGE_TAG="latest"
         REPOSITORY_URI = "864899865567.dkr.ecr.us-east-1.amazonaws.com/aisdlc"
+	IMAGE_NAME = "aisdlc"
     }
    
     stages {
@@ -33,6 +34,7 @@ pipeline {
         }
       }
     }
+   // scaning with trivy
    stage('Scan with Trivy') {
             steps {
                 script {
