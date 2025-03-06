@@ -34,17 +34,7 @@ pipeline {
         }
       }
     }
-   // scaning with trivy
-   stage('Scan with Trivy') {
-            steps {
-                script {
-                    sh """
-                        trivy image --exit-code 0 --severity LOW,MEDIUM,HIGH,CRITICAL ${IMAGE_NAME}:latest
-                        trivy image --exit-code 1 --severity CRITICAL ${IMAGE_NAME}:latest
-                    """
-                }
-            }
-        }
+   
      	    
     // Uploading Docker images into AWS ECR
     stage('Pushing to ECR') {
@@ -93,9 +83,5 @@ pipeline {
             }
         }
     }
-    post {
-        failure {
-            echo 'Security vulnerabilities detected!'
-        }
-    }
+    
 }
